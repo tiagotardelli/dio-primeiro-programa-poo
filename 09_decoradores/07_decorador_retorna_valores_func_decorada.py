@@ -8,10 +8,12 @@ def meu_decorador(funcao):
     return envelope
 
 @meu_decorador
-def ola_mundo(nome):
-    print(f"Olá mundo {nome}!")
-    return nome.upper()
+def ola_mundo(*args, **kwargs):
+    for arg in args:
+        print(arg)
+    print(f"Olá mundo {kwargs['nome']}!")
+    return kwargs['nome'].upper()
 
 if __name__ == "__main__":
-    resultado = ola_mundo('João')
+    resultado = ola_mundo(1, 2, nome ='João')
     print(resultado)
